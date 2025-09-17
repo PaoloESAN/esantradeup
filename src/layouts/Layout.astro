@@ -1,13 +1,29 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<title>TradeUp — Intercambia objetos fácil</title>
+		<meta
+			name="description"
+			content="Intercambia objetos cerca de ti. Publica, chatea en tiempo real y acepta o rechaza ofertas con TradeUp."
+		/>
+		<meta name="theme-color" content="#105DFB" />
 	</head>
-	<body>
+	<body
+		class="antialiased transition-colors duration-300"
+		style="background-color: var(--bg-primary); color: var(--text-primary);"
+	>
+		<script is:inline>
+			const theme =
+				localStorage.getItem("theme") ||
+				(window.matchMedia("(prefers-color-scheme: dark)").matches
+					? "dark"
+					: "light");
+			document.documentElement.setAttribute("data-theme", theme);
+		</script>
 		<slot />
 	</body>
 </html>

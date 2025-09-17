@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Monsieur+La+Doulaise&display=swap');
+@import "tailwindcss";
+
+@theme {
+    --font-monsieur: "Monsieur La Doulaise", sans-serif;
+}
+
+:root {
+    --color-primary: #105DFB;
+    --color-primary-dark: #0d4cce;
+    --color-primary-light: #105DFB;
+
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8fafc;
+    --bg-tertiary: #f1f5f9;
+    --bg-card: #ffffff;
+    --bg-navbar: rgba(255, 255, 255, 0.8);
+    --bg-hover: #f1f5f9;
+
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+    --text-tertiary: #64748b;
+    --text-muted: #94a3b8;
+
+    --border-primary: #e2e8f0;
+    --border-secondary: rgba(255, 255, 255, 0.2);
+
+    --shadow-color: rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="dark"] {
+    --bg-primary: #0f172a;
+    --bg-secondary: #1e293b;
+    --bg-tertiary: #334155;
+    --bg-card: #1e293b;
+    --bg-navbar: rgba(30, 41, 59, 0.8);
+    --bg-hover: #334155;
+
+    --text-primary: #f1f5f9;
+    --text-secondary: #cbd5e1;
+    --text-tertiary: #94a3b8;
+    --text-muted: #64748b;
+
+    --border-primary: #334155;
+    --border-secondary: rgba(255, 255, 255, 0.1);
+
+    --shadow-color: rgba(0, 0, 0, 0.2);
+}

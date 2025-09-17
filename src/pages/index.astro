@@ -1,11 +1,757 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Layout from "../layouts/Layout.astro";
+import "../styles/global.css";
 ---
 
 <Layout>
-	<Welcome />
+	<nav
+		class="fixed top-6 left-1/2 transform -translate-x-1/2 -translate-y-20 z-50"
+		id="navbar"
+	>
+		<div
+			class="backdrop-blur-md rounded-2xl px-6 py-3 shadow-lg"
+			style="background-color: var(--bg-navbar); border: 1px solid var(--border-secondary); box-shadow: 0 10px 15px -3px var(--shadow-color);"
+		>
+			<div class="flex items-center gap-8">
+				<div class="flex items-center gap-2">
+					<div
+						class="h-8 w-8 rounded-lg"
+						style="background-color: var(--color-primary);"
+					>
+					</div>
+					<span class="font-bold" style="color: var(--text-primary);"
+						>TradeUp</span
+					>
+				</div>
+				<div class="hidden md:flex items-center gap-6">
+					<a
+						href="/"
+						class="relative px-3 py-2 text-sm font-medium rounded-lg"
+						style="color: var(--color-primary); background-color: color-mix(in srgb, var(--color-primary) 10%, transparent);"
+					>
+						Inicio
+						<div
+							class="absolute inset-0 rounded-lg"
+							style="background-color: color-mix(in srgb, var(--color-primary) 10%, transparent);"
+						>
+						</div>
+					</a>
+					<a
+						href="/terminos"
+						class="px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200"
+						style="color: var(--text-secondary);"
+						onmouseover="this.style.color='var(--color-primary)'; this.style.backgroundColor='var(--bg-hover)'"
+						onmouseout="this.style.color='var(--text-secondary)'; this.style.backgroundColor='transparent'"
+					>
+						Términos y Condiciones
+					</a>
+					<a
+						href="/obtener-app"
+						class="px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200"
+						style="color: var(--text-secondary);"
+						onmouseover="this.style.color='var(--color-primary)'; this.style.backgroundColor='var(--bg-hover)'"
+						onmouseout="this.style.color='var(--text-secondary)'; this.style.backgroundColor='transparent'"
+					>
+						Obtener App
+					</a>
+				</div>
+				<div class="flex items-center gap-3">
+					<button
+						class="p-2 rounded-lg transition-all duration-200 cursor-pointer"
+						onmouseover="this.querySelectorAll('svg').forEach(svg => svg.style.color='var(--color-primary)'); this.style.backgroundColor='var(--bg-hover)'"
+						onmouseout="this.querySelectorAll('svg').forEach(svg => svg.style.color='var(--text-secondary)'); this.style.backgroundColor='transparent'"
+						id="theme-toggle"
+					>
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							class="h-5 w-5 transition-colors"
+							style="color: var(--text-secondary);"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke="currentColor"
+							id="sun-icon"
+						>
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								stroke-width="2"
+								d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+							></path>
+						</svg>
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							class="h-5 w-5 transition-colors hidden"
+							style="color: var(--text-secondary);"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke="currentColor"
+							id="moon-icon"
+						>
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								stroke-width="2"
+								d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+							></path>
+						</svg>
+					</button>
+				</div>
+				<button
+					class="md:hidden p-2 rounded-lg hover:bg-slate-100 transition-colors duration-200"
+					id="mobile-menu-btn"
+				>
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						class="h-5 w-5 text-slate-600"
+						fill="none"
+						viewBox="0 0 24 24"
+						stroke="currentColor"
+					>
+						<path
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							stroke-width="2"
+							d="M4 6h16M4 12h16M4 18h16"></path>
+					</svg>
+				</button>
+			</div>
+		</div>
+		<div
+			class="md:hidden mt-4 pt-4 hidden"
+			style="border-top: 1px solid var(--border-primary);"
+			id="mobile-menu"
+		>
+			<div class="flex flex-col gap-2">
+				<a
+					href="/"
+					class="px-3 py-2 text-sm font-medium rounded-lg"
+					style="color: var(--color-primary); background-color: color-mix(in srgb, var(--color-primary) 10%, transparent);"
+				>
+					Inicio
+				</a>
+				<a
+					href="/terminos"
+					class="px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200"
+					style="color: var(--text-secondary);"
+					onmouseover="this.style.color='var(--color-primary)'; this.style.backgroundColor='var(--bg-hover)'"
+					onmouseout="this.style.color='var(--text-secondary)'; this.style.backgroundColor='transparent'"
+				>
+					Términos y Condiciones
+				</a>
+				<a
+					href="/obtener-app"
+					class="px-3 py-2 text-sm font-medium text-slate-700 hover:text-[#105DFB] hover:bg-slate-50 rounded-lg transition-all duration-200"
+				>
+					Obtener App
+				</a>
+			</div>
+		</div>
+	</nav>
 </Layout>
+
+<main style="background-color: var(--bg-primary); color: var(--text-primary);">
+	<section class="relative isolate overflow-hidden">
+		<div
+			class="absolute inset-0 -z-10"
+			style="background-color: color-mix(in srgb, var(--color-primary) 10%, transparent);"
+		>
+		</div>
+		<div class="mx-auto max-w-7xl px-6 lg:px-8">
+			<div
+				class="grid grid-cols-1 lg:grid-cols-12 gap-y-12 lg:gap-12 items-center py-20 lg:py-28"
+			>
+				<div class="lg:col-span-7">
+					<div
+						class="inline-flex items-center gap-2 rounded-full px-3 py-1 text-sm opacity-0 transform translate-y-4"
+						style="background-color: var(--bg-card); color: var(--text-secondary); border: 1px solid var(--border-primary);"
+						id="badge"
+					>
+						<span
+							class="h-2 w-2 rounded-full"
+							style="background-color: var(--color-primary);"
+						></span>
+						Nuevo: chat en tiempo real
+					</div>
+					<h1
+						class="mt-6 text-4xl leading-tight font-extrabold tracking-tight sm:text-5xl md:text-6xl opacity-0 transform translate-y-4"
+						style="color: var(--text-primary);"
+						id="hero-title"
+					>
+						Intercambia objetos sin fricción con TradeUp
+					</h1>
+					<p
+						class="mt-6 text-lg leading-8 max-w-2xl opacity-0 transform translate-y-4"
+						style="color: var(--text-secondary);"
+						id="hero-subtitle"
+					>
+						Publica lo que ya no usas, negocia con chat en tiempo
+						real y acepta o rechaza ofertas al instante. Todo en una
+						sola app sencilla y segura.
+					</p>
+					<div
+						class="mt-10 flex flex-col sm:flex-row gap-4 opacity-0 transform translate-y-4"
+						id="hero-buttons"
+					>
+						<a
+							href="#"
+							class="inline-flex items-center gap-3 rounded-xl bg-[#105DFB] px-5 py-3 text-white font-medium shadow-sm hover:bg-[#0d4cce] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#105DFB]"
+						>
+							<svg
+								class="h-6 w-6 fill-current"
+								viewBox="0 0 512 512"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<path
+									d="M48,59.49v393a4.33,4.33,0,0,0,7.37,3.07L260,256,55.37,56.42A4.33,4.33,0,0,0,48,59.49Z"
+								></path>
+								<path
+									d="M345.8,174,89.22,32.64l-.16-.09c-4.42-2.4-8.62,3.58-5,7.06L285.19,231.93Z"
+								></path>
+								<path
+									d="M84.08,472.39c-3.64,3.48.56,9.46,5,7.06l.16-.09L345.8,338l-60.61-57.95Z"
+								></path>
+								<path
+									d="M449.38,231l-71.65-39.46L310.36,256l67.37,64.43L449.38,281C468.87,270.23,468.87,241.77,449.38,231Z"
+								></path>
+							</svg>
+							Google Play
+						</a>
+						<a
+							href="#"
+							class="inline-flex items-center gap-3 rounded-xl bg-slate-900 px-5 py-3 text-white font-medium shadow-sm hover:bg-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-slate-900"
+						>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 384 512"
+								class="h-6 w-6 fill-current"
+								><path
+									d="M318.7 268.7C318.5 211.1 367 179.6 369.2 178.2c-26.8-39.2-68.6-44.6-83.3-45.1-35.5-3.6-69.3 20.9-87.3 20.9-18 0-45.9-20.4-75.6-19.9-38.9 .6-74.5 22.6-94.5 57.4-40.2 69.6-10.3 172.6 28.9 229.2 19.1 27.6 41.8 58.7 71.7 57.6 29.1-1.2 40.2-18.6 75.5-18.6 35.3 0 45.6 18.6 76.1 18.1 31.5-.5 51.5-28.1 70.5-55.9 22.2-32.5 31.3-63.9 31.4-65.6-.7-.3-60.1-23.1-60.2-91.1zM259.5 83.3C273.8 65.9 283.1 42.8 280.7 20c-19.9 .8-43.9 13.2-58.2 30.5-12.8 14.8-24 38.5-21 61.1 22.3 1.7 45.1-11.3 58-28.3z"
+								></path></svg
+							>
+							App Store
+						</a>
+					</div>
+					<div
+						class="mt-6 flex items-center gap-4 text-sm opacity-0 transform translate-y-4"
+						style="color: var(--text-secondary);"
+						id="hero-stats"
+					>
+						<div class="flex -space-x-2">
+							<div class="h-8 w-8 rounded-full bg-yellow-400">
+							</div>
+							<div class="h-8 w-8 rounded-full bg-yellow-400">
+							</div>
+							<div class="h-8 w-8 rounded-full bg-yellow-400">
+							</div>
+						</div>
+						<span>Más de 5k intercambios realizados</span>
+					</div>
+				</div>
+				<div class="lg:col-span-5">
+					<div
+						class="relative mx-auto w-full max-w-md opacity-0"
+						id="phone-mockup"
+					>
+						<div
+							class="aspect-[9/19] w-full rounded-3xl bg-yellow-400 shadow-2xl ring-1 ring-black/10"
+						>
+						</div>
+						<div
+							class="absolute -right-8 -bottom-8 hidden sm:block h-28 w-28 rounded-2xl bg-yellow-400/80 shadow-xl ring-1 ring-black/10"
+						>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div
+			class="pointer-events-none absolute inset-x-0 top-0 -z-10 blur-3xl"
+			aria-hidden="true"
+		>
+			<div
+				class="relative left-1/2 -translate-x-1/2 w-[72rem] h-[28rem] bg-[#105DFB]/30 opacity-40"
+				style="clip-path: polygon(74% 44%, 100% 62%, 97% 90%, 84% 100%, 61% 94%, 38% 81%, 17% 68%, 0% 49%, 10% 23%, 31% 7%, 57% 0%, 78% 15%, 87% 32%);"
+			>
+			</div>
+		</div>
+	</section>
+
+	<section class="py-20" style="background-color: var(--bg-primary);">
+		<div class="mx-auto max-w-7xl px-6 lg:px-8">
+			<div
+				class="grid grid-cols-1 md:grid-cols-3 gap-8"
+				id="features-grid"
+			>
+				<div
+					class="rounded-2xl p-6 opacity-0 transform translate-y-8"
+					style="border: 1px solid var(--border-primary); background-color: var(--bg-card);"
+					data-feature="1"
+				>
+					<div
+						class="h-12 w-12 rounded-xl text-white grid place-items-center text-xl font-bold"
+						style="background-color: var(--color-primary);"
+					>
+						1
+					</div>
+					<h3
+						class="mt-4 text-xl font-semibold"
+						style="color: var(--text-primary);"
+					>
+						Publica objetos
+					</h3>
+					<p class="mt-2" style="color: var(--text-secondary);">
+						Sube tus artículos en minutos y llega a personas cerca
+						de ti.
+					</p>
+				</div>
+				<div
+					class="rounded-2xl p-6 opacity-0 transform translate-y-8"
+					style="border: 1px solid var(--border-primary); background-color: var(--bg-card);"
+					data-feature="2"
+				>
+					<div
+						class="h-12 w-12 rounded-xl text-white grid place-items-center text-xl font-bold"
+						style="background-color: var(--color-primary);"
+					>
+						2
+					</div>
+					<h3
+						class="mt-4 text-xl font-semibold"
+						style="color: var(--text-primary);"
+					>
+						Chatea al instante
+					</h3>
+					<p class="mt-2" style="color: var(--text-secondary);">
+						Negocia con chat en tiempo real y acuerda el mejor
+						intercambio.
+					</p>
+				</div>
+				<div
+					class="rounded-2xl p-6 opacity-0 transform translate-y-8"
+					style="border: 1px solid var(--border-primary); background-color: var(--bg-card);"
+					data-feature="3"
+				>
+					<div
+						class="h-12 w-12 rounded-xl text-white grid place-items-center text-xl font-bold"
+						style="background-color: var(--color-primary);"
+					>
+						3
+					</div>
+					<h3
+						class="mt-4 text-xl font-semibold"
+						style="color: var(--text-primary);"
+					>
+						Acepta o rechaza
+					</h3>
+					<p class="mt-2" style="color: var(--text-secondary);">
+						Gestiona ofertas con un toque y confirma el trato cuando
+						estés listo.
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section
+		class="py-20"
+		style="background-color: var(--bg-secondary);"
+		id="human-section"
+	>
+		<div
+			class="mx-auto max-w-7xl px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center"
+		>
+			<div class="lg:col-span-6 order-2 lg:order-1">
+				<div
+					class="aspect-video w-full rounded-3xl bg-yellow-400 shadow-xl opacity-0 transform scale-95"
+					style="border: 1px solid var(--border-primary);"
+					id="video-placeholder"
+				>
+				</div>
+			</div>
+			<div
+				class="lg:col-span-6 order-1 lg:order-2 opacity-0 transform translate-x-8"
+				id="human-content"
+			>
+				<h2
+					class="text-3xl md:text-4xl font-bold"
+					style="color: var(--text-primary);"
+				>
+					Un intercambio más humano
+				</h2>
+				<p class="mt-4" style="color: var(--text-secondary);">
+					Descubre personas con intereses afines, encuentra valor en
+					lo que otros ya no usan y reduce el desperdicio. Cada
+					trueque es una historia.
+				</p>
+				<ul
+					class="mt-6 space-y-3"
+					style="color: var(--text-secondary);"
+				>
+					<li class="flex items-start gap-3">
+						<span
+							class="mt-1 h-2.5 w-2.5 rounded-full"
+							style="background-color: var(--color-primary);"
+						></span><span>Sin comisiones ocultas</span>
+					</li>
+					<li class="flex items-start gap-3">
+						<span
+							class="mt-1 h-2.5 w-2.5 rounded-full"
+							style="background-color: var(--color-primary);"
+						></span><span>Acepta o rechaza intercambios</span>
+					</li>
+					<li class="flex items-start gap-3">
+						<span
+							class="mt-1 h-2.5 w-2.5 rounded-full"
+							style="background-color: var(--color-primary);"
+						></span><span>Chat en tiempo real</span>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</section>
+
+	<section
+		class="py-20"
+		style="background-color: var(--bg-primary);"
+		id="cta-section"
+	>
+		<div class="mx-auto max-w-7xl px-6 lg:px-8">
+			<div
+				class="rounded-3xl text-white p-10 md:p-14 lg:p-16 flex flex-col md:flex-row items-center justify-between gap-8 opacity-0 transform scale-95"
+				style="background-color: var(--color-primary);"
+				id="cta-card"
+			>
+				<div>
+					<h3 class="text-2xl md:text-3xl font-bold">
+						¿Listo para tu próximo intercambio?
+					</h3>
+					<p class="mt-2 text-white/90">
+						Descarga TradeUp y empieza hoy. Es gratis.
+					</p>
+				</div>
+				<div class="flex flex-col sm:flex-row gap-4">
+					<a
+						href="#"
+						class="inline-flex items-center gap-3 rounded-xl px-5 py-3 font-medium shadow-sm transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-white bg-black text-white hover:bg-gray-900"
+					>
+						<svg
+							class="h-6 w-6 aspect-square fill-white"
+							viewBox="0 0 512 512"
+							preserveAspectRatio="xMidYMid meet"
+							xmlns="http://www.w3.org/2000/svg"
+						>
+							<path
+								d="M48,59.49v393a4.33,4.33,0,0,0,7.37,3.07L260,256,55.37,56.42A4.33,4.33,0,0,0,48,59.49Z"
+							></path>
+							<path
+								d="M345.8,174,89.22,32.64l-.16-.09c-4.42-2.4-8.62,3.58-5,7.06L285.19,231.93Z"
+							></path>
+							<path
+								d="M84.08,472.39c-3.64,3.48.56,9.46,5,7.06l.16-.09L345.8,338l-60.61-57.95Z"
+							></path>
+							<path
+								d="M449.38,231l-71.65-39.46L310.36,256l67.37,64.43L449.38,281C468.87,270.23,468.87,241.77,449.38,231Z"
+							></path>
+						</svg>
+						Google Play
+					</a>
+					<a
+						href="#"
+						class="inline-flex items-center gap-3 rounded-xl bg-slate-900 px-5 py-3 text-white font-medium shadow-sm hover:bg-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-slate-900"
+					>
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							viewBox="0 0 384 512"
+							class="h-6 w-6 fill-current"
+							><path
+								d="M318.7 268.7C318.5 211.1 367 179.6 369.2 178.2c-26.8-39.2-68.6-44.6-83.3-45.1-35.5-3.6-69.3 20.9-87.3 20.9-18 0-45.9-20.4-75.6-19.9-38.9 .6-74.5 22.6-94.5 57.4-40.2 69.6-10.3 172.6 28.9 229.2 19.1 27.6 41.8 58.7 71.7 57.6 29.1-1.2 40.2-18.6 75.5-18.6 35.3 0 45.6 18.6 76.1 18.1 31.5-.5 51.5-28.1 70.5-55.9 22.2-32.5 31.3-63.9 31.4-65.6-.7-.3-60.1-23.1-60.2-91.1zM259.5 83.3C273.8 65.9 283.1 42.8 280.7 20c-19.9 .8-43.9 13.2-58.2 30.5-12.8 14.8-24 38.5-21 61.1 22.3 1.7 45.1-11.3 58-28.3z"
+							></path></svg
+						>
+						App Store
+					</a>
+				</div>
+			</div>
+		</div>
+	</section>
+</main>
+
+<footer
+	class="py-8"
+	style="border-top: 1px solid var(--border-primary); background-color: var(--bg-primary);"
+>
+	<div
+		class="mx-auto max-w-7xl px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm"
+		style="color: var(--text-secondary);"
+	>
+		<div class="flex items-center gap-2">
+			<div
+				class="h-6 w-6 rounded"
+				style="background-color: var(--color-primary);"
+			>
+			</div>
+			<span class="font-semibold" style="color: var(--text-primary);"
+				>TradeUp</span
+			>
+		</div>
+		<p>
+			© {new Date().getFullYear()} TradeUp. Todos los derechos reservados.
+		</p>
+	</div>
+</footer>
+
+<script>
+	import { gsap } from "gsap";
+	import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+	gsap.registerPlugin(ScrollTrigger);
+
+	function toggleTheme() {
+		const current = document.documentElement.getAttribute("data-theme");
+		const newTheme = current === "dark" ? "light" : "dark";
+
+		document.documentElement.setAttribute("data-theme", newTheme);
+		localStorage.setItem("theme", newTheme);
+
+		const sunIcon = document.getElementById("sun-icon");
+		const moonIcon = document.getElementById("moon-icon");
+
+		if (newTheme === "dark") {
+			moonIcon?.classList.add("hidden");
+			sunIcon?.classList.remove("hidden");
+		} else {
+			sunIcon?.classList.add("hidden");
+			moonIcon?.classList.remove("hidden");
+		}
+	}
+
+	function initThemeIcons() {
+		const currentTheme =
+			document.documentElement.getAttribute("data-theme");
+		const sunIcon = document.getElementById("sun-icon");
+		const moonIcon = document.getElementById("moon-icon");
+
+		if (currentTheme === "dark") {
+			moonIcon?.classList.add("hidden");
+			sunIcon?.classList.remove("hidden");
+		} else {
+			sunIcon?.classList.add("hidden");
+			moonIcon?.classList.remove("hidden");
+		}
+	}
+
+	document
+		.getElementById("theme-toggle")
+		?.addEventListener("click", toggleTheme);
+	initThemeIcons();
+
+	gsap.to("#navbar", {
+		y: 0,
+		duration: 1,
+		delay: 0.5,
+		ease: "elastic.out(1, 0.6)",
+	});
+
+	const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+	const mobileMenu = document.getElementById("mobile-menu");
+
+	mobileMenuBtn?.addEventListener("click", () => {
+		mobileMenu?.classList.toggle("hidden");
+	});
+
+	const tl = gsap.timeline();
+
+	tl.to("#hero-title", { opacity: 1, y: 0, duration: 1, ease: "power2.out" })
+		.to(
+			"#hero-subtitle",
+			{ opacity: 1, y: 0, duration: 0.8, ease: "power2.out" },
+			"-=0.6",
+		)
+		.to(
+			"#badge",
+			{ opacity: 1, y: 0, duration: 0.8, ease: "power2.out" },
+			"-=0.3",
+		)
+		.to(
+			"#phone-mockup",
+			{
+				opacity: 1,
+				scale: 1,
+				rotation: 2,
+				duration: 1.2,
+				ease: "elastic.out(1, 0.5)",
+			},
+			"-=1",
+		)
+		.to(
+			"#hero-buttons",
+			{ opacity: 1, y: 0, duration: 0.8, ease: "power2.out" },
+			"-=0.4",
+		)
+		.to(
+			"#hero-stats",
+			{ opacity: 1, y: 0, duration: 0.6, ease: "power2.out" },
+			"-=0.4",
+		);
+
+	gsap.to("#phone-mockup", {
+		y: -20,
+		duration: 3,
+		ease: "power1.inOut",
+		yoyo: true,
+		repeat: -1,
+	});
+
+	ScrollTrigger.create({
+		trigger: "#features-grid",
+		start: "top 80%",
+		end: "bottom 20%",
+		toggleActions: "play reverse play reverse",
+		onEnter: () => {
+			gsap.to("[data-feature]", {
+				opacity: 1,
+				y: 0,
+				duration: 0.8,
+				stagger: 0.2,
+				ease: "power2.out",
+			});
+		},
+		onLeave: () => {
+			gsap.to("[data-feature]", {
+				opacity: 0,
+				y: 30,
+				duration: 0.6,
+				stagger: 0.1,
+				ease: "power2.in",
+			});
+		},
+		onEnterBack: () => {
+			gsap.to("[data-feature]", {
+				opacity: 1,
+				y: 0,
+				duration: 0.8,
+				stagger: 0.2,
+				ease: "power2.out",
+			});
+		},
+		onLeaveBack: () => {
+			gsap.to("[data-feature]", {
+				opacity: 0,
+				y: 30,
+				duration: 0.6,
+				stagger: 0.1,
+				ease: "power2.in",
+			});
+		},
+	});
+
+	ScrollTrigger.create({
+		trigger: "#human-section",
+		start: "top 75%",
+		end: "bottom 25%",
+		toggleActions: "play reverse play reverse",
+		onEnter: () => {
+			gsap.to("#video-placeholder", {
+				opacity: 1,
+				scale: 1,
+				duration: 1,
+				ease: "power2.out",
+			});
+			gsap.to("#human-content", {
+				opacity: 1,
+				x: 0,
+				duration: 0.8,
+				ease: "power2.out",
+			});
+		},
+		onLeave: () => {
+			gsap.to("#video-placeholder", {
+				opacity: 0,
+				scale: 0.9,
+				duration: 0.6,
+				ease: "power2.in",
+			});
+			gsap.to("#human-content", {
+				opacity: 0,
+				x: 40,
+				duration: 0.6,
+				ease: "power2.in",
+			});
+		},
+		onEnterBack: () => {
+			gsap.to("#video-placeholder", {
+				opacity: 1,
+				scale: 1,
+				duration: 1,
+				ease: "power2.out",
+			});
+			gsap.to("#human-content", {
+				opacity: 1,
+				x: 0,
+				duration: 0.8,
+				ease: "power2.out",
+			});
+		},
+		onLeaveBack: () => {
+			gsap.to("#video-placeholder", {
+				opacity: 0,
+				scale: 0.9,
+				duration: 0.6,
+				ease: "power2.in",
+			});
+			gsap.to("#human-content", {
+				opacity: 0,
+				x: 40,
+				duration: 0.6,
+				ease: "power2.in",
+			});
+		},
+	});
+
+	ScrollTrigger.create({
+		trigger: "#cta-section",
+		start: "top 80%",
+		end: "bottom 20%",
+		toggleActions: "play reverse play reverse",
+		onEnter: () => {
+			gsap.to("#cta-card", {
+				opacity: 1,
+				scale: 1,
+				duration: 1,
+				ease: "elastic.out(1, 0.5)",
+			});
+		},
+		onLeave: () => {
+			gsap.to("#cta-card", {
+				opacity: 0,
+				scale: 0.9,
+				duration: 0.6,
+				ease: "power2.in",
+			});
+		},
+		onEnterBack: () => {
+			gsap.to("#cta-card", {
+				opacity: 1,
+				scale: 1,
+				duration: 1,
+				ease: "elastic.out(1, 0.5)",
+			});
+		},
+		onLeaveBack: () => {
+			gsap.to("#cta-card", {
+				opacity: 0,
+				scale: 0.9,
+				duration: 0.6,
+				ease: "power2.in",
+			});
+		},
+	});
+
+	document.querySelectorAll('a[href="#"]').forEach((button) => {
+		button.addEventListener("mouseenter", () => {
+			gsap.to(button, { scale: 1.05, duration: 0.2, ease: "power2.out" });
+		});
+		button.addEventListener("mouseleave", () => {
+			gsap.to(button, { scale: 1, duration: 0.2, ease: "power2.out" });
+		});
+	});
+</script>
