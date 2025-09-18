@@ -4,6 +4,8 @@ import "../styles/global.css";
 import pfp1 from "../assets/pfp1.png";
 import pfp2 from "../assets/pfp2.png";
 import pfp3 from "../assets/pfp3.png";
+import tradeupLogo from "../assets/tradeupFondoAzul.svg";
+import principalDark from "../assets/principalDark.png";
 ---
 
 <Layout>
@@ -22,7 +24,7 @@ import pfp3 from "../assets/pfp3.png";
 						style="background-color: var(--color-primary);"
 					>
 						<img
-							src="/src/assets/tradeupFondoAzul.svg"
+							src={tradeupLogo.src}
 							alt="TradeUp Logo"
 							class="h-full w-full object-cover rounded-lg"
 						/>
@@ -285,16 +287,18 @@ import pfp3 from "../assets/pfp3.png";
 							class="aspect-[9/19] w-full rounded-3xl shadow-2xl ring-1 ring-black/10"
 						>
 							<img
-								src="/src/assets/principalDark.png"
+								src={principalDark.src}
 								alt="Phone Mockup"
 								class="w-full h-full object-cover rounded-3xl"
+								width={principalDark.width}
+								height={principalDark.height}
 							/>
 						</div>
 						<div
 							class="absolute -right-8 -bottom-8 hidden sm:block h-28 w-28 rounded-2xl shadow-xl ring-1 ring-black/10"
 						>
 							<img
-								src="/src/assets/tradeupFondoAzul.svg"
+								src={tradeupLogo.src}
 								alt="Phone Mockup Light"
 								class="w-full h-full object-cover rounded-2xl"
 							/>
@@ -530,7 +534,7 @@ import pfp3 from "../assets/pfp3.png";
 				style="background-color: var(--color-primary);"
 			>
 				<img
-					src="/src/assets/tradeupFondoAzul.svg"
+					src={tradeupLogo.src}
 					alt="TradeUp Logo"
 					class="h-full w-full object-cover rounded"
 				/>
@@ -558,7 +562,7 @@ import pfp3 from "../assets/pfp3.png";
 			autoplay: true,
 			loop: true,
 			canvas: canvasElement,
-			src: "/src/assets/Welcome.json",
+			src: "/Welcome.json",
 		});
 	}
 
