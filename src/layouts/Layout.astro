@@ -1,3 +1,7 @@
+---
+import Analytics from "@vercel/analytics/astro";
+---
+
 <!doctype html>
 <html lang="es">
 	<head>
@@ -11,6 +15,8 @@
 			content="Intercambia objetos cerca de ti. Publica, chatea en tiempo real y acepta o rechaza ofertas con TradeUp."
 		/>
 		<meta name="theme-color" content="#105DFB" />
+		{/* @ts-ignore */}
+		<Analytics />
 	</head>
 	<body
 		class="antialiased transition-colors duration-300"
