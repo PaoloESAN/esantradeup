@@ -1,6 +1,9 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import "../styles/global.css";
+import pfp1 from "../assets/pfp1.png";
+import pfp2 from "../assets/pfp2.png";
+import pfp3 from "../assets/pfp3.png";
 ---
 
 <Layout>
@@ -18,6 +21,11 @@ import "../styles/global.css";
 						class="h-8 w-8 rounded-lg"
 						style="background-color: var(--color-primary);"
 					>
+						<img
+							src="/src/assets/tradeupFondoAzul.svg"
+							alt="TradeUp Logo"
+							class="h-full w-full object-cover rounded-lg"
+						/>
 					</div>
 					<span class="font-bold" style="color: var(--text-primary);"
 						>TradeUp</span
@@ -97,12 +105,15 @@ import "../styles/global.css";
 					</button>
 				</div>
 				<button
-					class="md:hidden p-2 rounded-lg hover:bg-slate-100 transition-colors duration-200"
+					class="md:hidden p-2 rounded-lg transition-all duration-200 cursor-pointer"
+					onmouseover="this.querySelectorAll('svg').forEach(svg => svg.style.color='var(--color-primary)'); this.style.backgroundColor='var(--bg-hover)'"
+					onmouseout="this.querySelectorAll('svg').forEach(svg => svg.style.color='var(--text-secondary)'); this.style.backgroundColor='transparent'"
 					id="mobile-menu-btn"
 				>
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
-						class="h-5 w-5 text-slate-600"
+						class="h-5 w-5 transition-colors"
+						style="color: var(--text-secondary);"
 						fill="none"
 						viewBox="0 0 24 24"
 						stroke="currentColor"
@@ -117,8 +128,8 @@ import "../styles/global.css";
 			</div>
 		</div>
 		<div
-			class="md:hidden mt-4 pt-4 hidden"
-			style="border-top: 1px solid var(--border-primary);"
+			class="md:hidden mt-4 pt-4 backdrop-blur-md rounded-2xl px-6 py-3 shadow-lg opacity-0 transform translate-y-2 scale-95 pointer-events-none"
+			style="border-top: 1px solid var(--border-primary); background-color: var(--bg-navbar); border: 1px solid var(--border-secondary); box-shadow: 0 10px 15px -3px var(--shadow-color);"
 			id="mobile-menu"
 		>
 			<div class="flex flex-col gap-2">
@@ -140,7 +151,10 @@ import "../styles/global.css";
 				</a>
 				<a
 					href="/obtener-app"
-					class="px-3 py-2 text-sm font-medium text-slate-700 hover:text-[#105DFB] hover:bg-slate-50 rounded-lg transition-all duration-200"
+					class="px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200"
+					style="color: var(--text-secondary);"
+					onmouseover="this.style.color='var(--color-primary)'; this.style.backgroundColor='var(--bg-hover)'"
+					onmouseout="this.style.color='var(--text-secondary)'; this.style.backgroundColor='transparent'"
 				>
 					Obtener App
 				</a>
@@ -158,7 +172,7 @@ import "../styles/global.css";
 		</div>
 		<div class="mx-auto max-w-7xl px-6 lg:px-8">
 			<div
-				class="grid grid-cols-1 lg:grid-cols-12 gap-y-12 lg:gap-12 items-center py-20 lg:py-28"
+				class="grid grid-cols-1 lg:grid-cols-12 gap-y-12 lg:gap-12 items-center py-20 lg:py-28 pt-32 md:pt-32 lg:pt-28"
 			>
 				<div class="lg:col-span-7">
 					<div
@@ -177,7 +191,7 @@ import "../styles/global.css";
 						style="color: var(--text-primary);"
 						id="hero-title"
 					>
-						Intercambia objetos sin fricción con TradeUp
+						Intercambia objetos sin problemas con TradeUp
 					</h1>
 					<p
 						class="mt-6 text-lg leading-8 max-w-2xl opacity-0 transform translate-y-4"
@@ -186,7 +200,7 @@ import "../styles/global.css";
 					>
 						Publica lo que ya no usas, negocia con chat en tiempo
 						real y acepta o rechaza ofertas al instante. Todo en una
-						sola app sencilla y segura.
+						sola app sencilla.
 					</p>
 					<div
 						class="mt-10 flex flex-col sm:flex-row gap-4 opacity-0 transform translate-y-4"
@@ -237,12 +251,27 @@ import "../styles/global.css";
 						id="hero-stats"
 					>
 						<div class="flex -space-x-2">
-							<div class="h-8 w-8 rounded-full bg-yellow-400">
-							</div>
-							<div class="h-8 w-8 rounded-full bg-yellow-400">
-							</div>
-							<div class="h-8 w-8 rounded-full bg-yellow-400">
-							</div>
+							<img
+								src={pfp1.src}
+								alt="Usuario 1"
+								class="h-8 w-8 rounded-full object-cover ring-2 ring-black/10"
+								width={pfp1.width}
+								height={pfp1.height}
+							/>
+							<img
+								src={pfp2.src}
+								alt="Usuario 2"
+								class="h-8 w-8 rounded-full object-cover ring-2 ring-black/10"
+								width={pfp2.width}
+								height={pfp2.height}
+							/>
+							<img
+								src={pfp3.src}
+								alt="Usuario 3"
+								class="h-8 w-8 rounded-full object-cover ring-2 ring-black/10"
+								width={pfp3.width}
+								height={pfp3.height}
+							/>
 						</div>
 						<span>Más de 5k intercambios realizados</span>
 					</div>
@@ -253,12 +282,22 @@ import "../styles/global.css";
 						id="phone-mockup"
 					>
 						<div
-							class="aspect-[9/19] w-full rounded-3xl bg-yellow-400 shadow-2xl ring-1 ring-black/10"
+							class="aspect-[9/19] w-full rounded-3xl shadow-2xl ring-1 ring-black/10"
 						>
+							<img
+								src="/src/assets/principalDark.png"
+								alt="Phone Mockup"
+								class="w-full h-full object-cover rounded-3xl"
+							/>
 						</div>
 						<div
-							class="absolute -right-8 -bottom-8 hidden sm:block h-28 w-28 rounded-2xl bg-yellow-400/80 shadow-xl ring-1 ring-black/10"
+							class="absolute -right-8 -bottom-8 hidden sm:block h-28 w-28 rounded-2xl shadow-xl ring-1 ring-black/10"
 						>
+							<img
+								src="/src/assets/tradeupFondoAzul.svg"
+								alt="Phone Mockup Light"
+								class="w-full h-full object-cover rounded-2xl"
+							/>
 						</div>
 					</div>
 				</div>
@@ -362,10 +401,12 @@ import "../styles/global.css";
 		>
 			<div class="lg:col-span-6 order-2 lg:order-1">
 				<div
-					class="aspect-video w-full rounded-3xl bg-yellow-400 shadow-xl opacity-0 transform scale-95"
+					class="aspect-video w-full rounded-3xl shadow-xl opacity-0 transform scale-95 justify-center items-center grid place-items-center"
 					style="border: 1px solid var(--border-primary);"
 					id="video-placeholder"
 				>
+					<canvas id="canvas" class="w-full h-full rounded-3xl"
+					></canvas>
 				</div>
 			</div>
 			<div
@@ -488,6 +529,11 @@ import "../styles/global.css";
 				class="h-6 w-6 rounded"
 				style="background-color: var(--color-primary);"
 			>
+				<img
+					src="/src/assets/tradeupFondoAzul.svg"
+					alt="TradeUp Logo"
+					class="h-full w-full object-cover rounded"
+				/>
 			</div>
 			<span class="font-semibold" style="color: var(--text-primary);"
 				>TradeUp</span
@@ -502,6 +548,19 @@ import "../styles/global.css";
 <script>
 	import { gsap } from "gsap";
 	import { ScrollTrigger } from "gsap/ScrollTrigger";
+	import { DotLottie } from "@lottiefiles/dotlottie-web";
+
+	const canvasElement = document.getElementById(
+		"canvas",
+	) as HTMLCanvasElement;
+	if (canvasElement) {
+		new DotLottie({
+			autoplay: true,
+			loop: true,
+			canvas: canvasElement,
+			src: "/src/assets/Welcome.json",
+		});
+	}
 
 	gsap.registerPlugin(ScrollTrigger);
 
@@ -553,10 +612,95 @@ import "../styles/global.css";
 
 	const mobileMenuBtn = document.getElementById("mobile-menu-btn");
 	const mobileMenu = document.getElementById("mobile-menu");
+	let mobileMenuOpen = false;
 
-	mobileMenuBtn?.addEventListener("click", () => {
-		mobileMenu?.classList.toggle("hidden");
+	function closeMobileMenu() {
+		if (mobileMenuOpen) {
+			gsap.to(mobileMenu, {
+				opacity: 0,
+				y: 8,
+				scale: 0.95,
+				duration: 0.2,
+				ease: "power2.in",
+				onComplete: () => {
+					if (mobileMenu) {
+						mobileMenu.style.pointerEvents = "none";
+					}
+				},
+			});
+			mobileMenuOpen = false;
+		}
+	}
+
+	function openMobileMenu() {
+		if (!mobileMenuOpen) {
+			if (mobileMenu) {
+				mobileMenu.style.pointerEvents = "auto";
+			}
+
+			gsap.to(mobileMenu, {
+				opacity: 1,
+				y: 0,
+				scale: 1,
+				duration: 0.3,
+				ease: "back.out(1.7)",
+			});
+
+			mobileMenuOpen = true;
+		}
+	}
+
+	mobileMenuBtn?.addEventListener("click", (e) => {
+		e.stopPropagation();
+		if (mobileMenuOpen) {
+			closeMobileMenu();
+		} else {
+			openMobileMenu();
+		}
 	});
+
+	document.addEventListener("click", (e) => {
+		if (
+			mobileMenuOpen &&
+			mobileMenu &&
+			!mobileMenu.contains(e.target as Node)
+		) {
+			closeMobileMenu();
+		}
+	});
+
+	mobileMenu?.addEventListener("click", (e) => {
+		e.stopPropagation();
+	});
+
+	function clearHoverStates() {
+		const themeToggle = document.getElementById("theme-toggle");
+		if (themeToggle) {
+			themeToggle.style.backgroundColor = "transparent";
+			themeToggle.querySelectorAll("svg").forEach((svg) => {
+				svg.style.color = "var(--text-secondary)";
+			});
+		}
+
+		const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+		if (mobileMenuBtn) {
+			mobileMenuBtn.style.backgroundColor = "transparent";
+			mobileMenuBtn.querySelectorAll("svg").forEach((svg) => {
+				svg.style.color = "var(--text-secondary)";
+			});
+		}
+
+		const navLinks = document.querySelectorAll("nav a[onmouseover]");
+		navLinks.forEach((link) => {
+			if (link instanceof HTMLElement) {
+				link.style.backgroundColor = "transparent";
+				link.style.color = "var(--text-secondary)";
+			}
+		});
+	}
+
+	document.addEventListener("touchend", clearHoverStates);
+	document.addEventListener("click", clearHoverStates);
 
 	const tl = gsap.timeline();
 
