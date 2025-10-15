@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import "../styles/global.css";
+import { Image } from "astro:assets";
 import tradeupLogo from "../assets/tradeupFondoAzul.svg";
 ---
 
@@ -14,21 +15,25 @@ import tradeupLogo from "../assets/tradeupFondoAzul.svg";
             style="background-color: var(--bg-navbar); border: 1px solid var(--border-secondary); box-shadow: 0 10px 15px -3px var(--shadow-color);"
         >
             <div class="flex items-center gap-8">
-                <div class="flex items-center gap-2">
+                <a
+                    href="/"
+                    class="flex items-center gap-2 cursor-pointer transition-opacity hover:opacity-80"
+                >
                     <div
                         class="h-8 w-8 rounded-lg"
                         style="background-color: var(--color-primary);"
                     >
-                        <img
-                            src={tradeupLogo.src}
+                        <Image
+                            src={tradeupLogo}
                             alt="TradeUp Logo"
                             class="h-full w-full object-cover rounded-lg"
+                            loading="eager"
                         />
                     </div>
                     <span class="font-bold" style="color: var(--text-primary);"
                         >TradeUp</span
                     >
-                </div>
+                </a>
                 <div class="hidden md:flex items-center gap-6">
                     <a
                         href="/"
@@ -38,6 +43,15 @@ import tradeupLogo from "../assets/tradeupFondoAzul.svg";
                         onmouseout="this.style.color='var(--text-secondary)'; this.style.backgroundColor='transparent'"
                     >
                         Inicio
+                    </a>
+                    <a
+                        href="/centro-ayuda"
+                        class="px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200"
+                        style="color: var(--text-secondary);"
+                        onmouseover="this.style.color='var(--color-primary)'; this.style.backgroundColor='var(--bg-hover)'"
+                        onmouseout="this.style.color='var(--text-secondary)'; this.style.backgroundColor='transparent'"
+                    >
+                        Centro de Ayuda
                     </a>
                     <a
                         href="/contactanos"
@@ -50,15 +64,6 @@ import tradeupLogo from "../assets/tradeupFondoAzul.svg";
                             style="background-color: color-mix(in srgb, var(--color-primary) 10%, transparent);"
                         >
                         </div>
-                    </a>
-                    <a
-                        href="/centro-ayuda"
-                        class="px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200"
-                        style="color: var(--text-secondary);"
-                        onmouseover="this.style.color='var(--color-primary)'; this.style.backgroundColor='var(--bg-hover)'"
-                        onmouseout="this.style.color='var(--text-secondary)'; this.style.backgroundColor='transparent'"
-                    >
-                        Centro de Ayuda
                     </a>
                 </div>
                 <div class="flex items-center gap-3">
@@ -141,13 +146,6 @@ import tradeupLogo from "../assets/tradeupFondoAzul.svg";
                     Inicio
                 </a>
                 <a
-                    href="/contactanos"
-                    class="px-3 py-2 text-sm font-medium rounded-lg"
-                    style="color: var(--color-primary); background-color: color-mix(in srgb, var(--color-primary) 10%, transparent);"
-                >
-                    Contáctanos
-                </a>
-                <a
                     href="/centro-ayuda"
                     class="px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200"
                     style="color: var(--text-secondary);"
@@ -155,6 +153,13 @@ import tradeupLogo from "../assets/tradeupFondoAzul.svg";
                     onmouseout="this.style.color='var(--text-secondary)'; this.style.backgroundColor='transparent'"
                 >
                     Centro de Ayuda
+                </a>
+                <a
+                    href="/contactanos"
+                    class="px-3 py-2 text-sm font-medium rounded-lg"
+                    style="color: var(--color-primary); background-color: color-mix(in srgb, var(--color-primary) 10%, transparent);"
+                >
+                    Contáctanos
                 </a>
             </div>
         </div>
@@ -363,10 +368,11 @@ import tradeupLogo from "../assets/tradeupFondoAzul.svg";
                 class="h-6 w-6 rounded"
                 style="background-color: var(--color-primary);"
             >
-                <img
-                    src={tradeupLogo.src}
+                <Image
+                    src={tradeupLogo}
                     alt="TradeUp Logo"
                     class="h-full w-full object-cover rounded"
+                    loading="lazy"
                 />
             </div>
             <span class="font-semibold" style="color: var(--text-primary);"

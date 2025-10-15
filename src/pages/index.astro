@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { Image } from "astro:assets";
 import "../styles/global.css";
 import pfp1 from "../assets/pfp1.png";
 import pfp2 from "../assets/pfp2.png";
@@ -19,21 +20,25 @@ import principalLight from "../assets/principalLight.png";
 			style="background-color: var(--bg-navbar); border: 1px solid var(--border-secondary); box-shadow: 0 10px 15px -3px var(--shadow-color);"
 		>
 			<div class="flex items-center gap-8">
-				<div class="flex items-center gap-2">
+				<a
+					href="/"
+					class="flex items-center gap-2 cursor-pointer transition-opacity hover:opacity-80"
+				>
 					<div
 						class="h-8 w-8 rounded-lg"
 						style="background-color: var(--color-primary);"
 					>
-						<img
-							src={tradeupLogo.src}
+						<Image
+							src={tradeupLogo}
 							alt="TradeUp Logo"
 							class="h-full w-full object-cover rounded-lg"
+							loading="eager"
 						/>
 					</div>
 					<span class="font-bold" style="color: var(--text-primary);"
 						>TradeUp</span
 					>
-				</div>
+				</a>
 				<div class="hidden md:flex items-center gap-6">
 					<a
 						href="/"
@@ -48,15 +53,6 @@ import principalLight from "../assets/principalLight.png";
 						</div>
 					</a>
 					<a
-						href="/contactanos"
-						class="px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200"
-						style="color: var(--text-secondary);"
-						onmouseover="this.style.color='var(--color-primary)'; this.style.backgroundColor='var(--bg-hover)'"
-						onmouseout="this.style.color='var(--text-secondary)'; this.style.backgroundColor='transparent'"
-					>
-						Contáctanos
-					</a>
-					<a
 						href="/centro-ayuda"
 						class="px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200"
 						style="color: var(--text-secondary);"
@@ -64,6 +60,15 @@ import principalLight from "../assets/principalLight.png";
 						onmouseout="this.style.color='var(--text-secondary)'; this.style.backgroundColor='transparent'"
 					>
 						Centro de Ayuda
+					</a>
+					<a
+						href="/contactanos"
+						class="px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200"
+						style="color: var(--text-secondary);"
+						onmouseover="this.style.color='var(--color-primary)'; this.style.backgroundColor='var(--bg-hover)'"
+						onmouseout="this.style.color='var(--text-secondary)'; this.style.backgroundColor='transparent'"
+					>
+						Contáctanos
 					</a>
 				</div>
 				<div class="flex items-center gap-3">
@@ -144,15 +149,6 @@ import principalLight from "../assets/principalLight.png";
 					Inicio
 				</a>
 				<a
-					href="/contactanos"
-					class="px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200"
-					style="color: var(--text-secondary);"
-					onmouseover="this.style.color='var(--color-primary)'; this.style.backgroundColor='var(--bg-hover)'"
-					onmouseout="this.style.color='var(--text-secondary)'; this.style.backgroundColor='transparent'"
-				>
-					Contáctanos
-				</a>
-				<a
 					href="/centro-ayuda"
 					class="px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200"
 					style="color: var(--text-secondary);"
@@ -160,6 +156,15 @@ import principalLight from "../assets/principalLight.png";
 					onmouseout="this.style.color='var(--text-secondary)'; this.style.backgroundColor='transparent'"
 				>
 					Centro de Ayuda
+				</a>
+				<a
+					href="/contactanos"
+					class="px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200"
+					style="color: var(--text-secondary);"
+					onmouseover="this.style.color='var(--color-primary)'; this.style.backgroundColor='var(--bg-hover)'"
+					onmouseout="this.style.color='var(--text-secondary)'; this.style.backgroundColor='transparent'"
+				>
+					Contáctanos
 				</a>
 			</div>
 		</div>
@@ -254,26 +259,23 @@ import principalLight from "../assets/principalLight.png";
 						id="hero-stats"
 					>
 						<div class="flex -space-x-2">
-							<img
-								src={pfp1.src}
+							<Image
+								src={pfp1}
 								alt="Usuario 1"
 								class="h-8 w-8 rounded-full object-cover ring-2 ring-black/10"
-								width={pfp1.width}
-								height={pfp1.height}
+								loading="eager"
 							/>
-							<img
-								src={pfp2.src}
+							<Image
+								src={pfp2}
 								alt="Usuario 2"
 								class="h-8 w-8 rounded-full object-cover ring-2 ring-black/10"
-								width={pfp2.width}
-								height={pfp2.height}
+								loading="eager"
 							/>
-							<img
-								src={pfp3.src}
+							<Image
+								src={pfp3}
 								alt="Usuario 3"
 								class="h-8 w-8 rounded-full object-cover ring-2 ring-black/10"
-								width={pfp3.width}
-								height={pfp3.height}
+								loading="eager"
 							/>
 						</div>
 						<span>Más de 5k intercambios realizados</span>
@@ -287,31 +289,30 @@ import principalLight from "../assets/principalLight.png";
 						<div
 							class="aspect-[9/19] w-full rounded-3xl shadow-2xl ring-1 ring-black/10"
 						>
-							<img
-								src={principalLight.src}
+							<Image
+								src={principalLight}
 								alt="Phone Mockup Light"
 								class="w-full h-full object-cover rounded-3xl transition-opacity duration-300"
-								width={principalLight.width}
-								height={principalLight.height}
 								id="phone-image-light"
+								loading="eager"
 							/>
-							<img
-								src={principalDark.src}
+							<Image
+								src={principalDark}
 								alt="Phone Mockup Dark"
 								class="w-full h-full object-cover rounded-3xl absolute inset-0 transition-opacity duration-300"
-								width={principalDark.width}
-								height={principalDark.height}
 								id="phone-image-dark"
 								style="opacity: 0;"
+								loading="eager"
 							/>
 						</div>
 						<div
 							class="absolute -right-8 -bottom-8 hidden sm:block h-28 w-28 rounded-2xl shadow-xl ring-1 ring-black/10"
 						>
-							<img
-								src={tradeupLogo.src}
+							<Image
+								src={tradeupLogo}
 								alt="Phone Mockup Light"
 								class="w-full h-full object-cover rounded-2xl"
+								loading="lazy"
 							/>
 						</div>
 					</div>
@@ -544,10 +545,11 @@ import principalLight from "../assets/principalLight.png";
 				class="h-6 w-6 rounded"
 				style="background-color: var(--color-primary);"
 			>
-				<img
-					src={tradeupLogo.src}
+				<Image
+					src={tradeupLogo}
 					alt="TradeUp Logo"
 					class="h-full w-full object-cover rounded"
+					loading="lazy"
 				/>
 			</div>
 			<span class="font-semibold" style="color: var(--text-primary);"
